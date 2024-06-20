@@ -24,7 +24,7 @@ class CryptoListingViewModel @Inject constructor(
     var searchJob : Job? = null
 
     init {
-
+        getCryptoListings()
     }
 
     fun onEvent(event : CryptoListingsEvents){

@@ -84,6 +84,8 @@ dependencies {
 //    implementation ("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
 //    ksp ("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
 
+    
+    implementation ("androidx.paging:paging-compose:3.3.0")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
