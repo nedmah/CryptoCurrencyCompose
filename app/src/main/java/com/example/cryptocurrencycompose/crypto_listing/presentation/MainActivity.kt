@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.cryptocurrencycompose.crypto_listing.data.remote.CryptoApi
 import com.example.cryptocurrencycompose.crypto_listing.data.remote.CryptoDto
 import com.example.cryptocurrencycompose.ui.theme.CryptoCurrencyComposeTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                    CryptoListingsScreen(modifier = Modifier)
+                    DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.cryptocurrencycompose.crypto_listing.presentation
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,16 +14,26 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
+@Destination(start = true)
 fun CryptoListingsScreen(
+    navigator: DestinationsNavigator,
     viewModel: CryptoListingViewModel = hiltViewModel(),
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     val state = viewModel.state
+
+    val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = state.isRefreshing)
 
     Column(
         modifier = modifier.fillMaxSize()
@@ -37,17 +48,28 @@ fun CryptoListingsScreen(
             maxLines = 1,
             singleLine = true
         )
-        Spacer(modifier = modifier.size(10.dp))
-        LazyColumn(
-            modifier = modifier.fillMaxSize(),
 
-            ) {
-            items(state.cryptos.size) { i ->
+        SwipeRefresh(
+            state = swipeRefreshState,
+            onRefresh = { viewModel.onEvent(CryptoListingsEvents.Refresh) }
+        ) {
+            LazyColumn(
+                modifier = modifier.fillMaxSize(),
 
-                ListingsItem(modifier = modifier.fillMaxWidth(), crypto = state.cryptos[i])
+                ) {
+                items(state.cryptos.size) { i ->
 
-                if (i < state.cryptos.size) {
-                    HorizontalDivider(modifier = modifier.padding(horizontal = 16.dp))
+                    ListingsItem(modifier = modifier.fillMaxWidth(), crypto = state.cryptos[i])
+
+                    if (i < state.cryptos.size) {
+                        HorizontalDivider(
+                            modifier = modifier
+                                .padding(horizontal = 16.dp)
+                                .clickable {
+                                    //TODO: доп инфа?
+                                }
+                        )
+                    }
                 }
             }
         }

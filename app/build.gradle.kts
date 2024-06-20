@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,6 +59,7 @@ dependencies {
     val viewmodel_version = "2.8.1"
     val hilt_compiler = "1.2.0"
     val room_version = "2.6.1"
+    val ksp_version = "1.9.0-1.0.12"
 
 
 
@@ -81,11 +83,17 @@ dependencies {
     implementation ("androidx.room:room-paging:$room_version")
 
     // Compose Nav Destinations
-//    implementation ("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
-//    ksp ("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
+    implementation ("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
+    ksp ("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
 
-    
+    // KSP
+    ksp("com.google.devtools.ksp:symbol-processing-api:$ksp_version")
+
+
+    //Paging
     implementation ("androidx.paging:paging-compose:3.3.0")
+
+    implementation ("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
