@@ -1,4 +1,4 @@
-package com.example.cryptocurrencycompose.crypto_listing.presentation
+package com.example.cryptocurrencycompose.crypto_listing.presentation.crypto_listing
 
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoModel
 

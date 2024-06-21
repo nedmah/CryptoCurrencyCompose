@@ -2,7 +2,7 @@ package com.example.cryptocurrencycompose.crypto_listing.data.remote
 
 import com.squareup.moshi.Json
 
-data class CryptoDataDto(
+data class CryptoListingDataDto(
 
     val id : String,
 

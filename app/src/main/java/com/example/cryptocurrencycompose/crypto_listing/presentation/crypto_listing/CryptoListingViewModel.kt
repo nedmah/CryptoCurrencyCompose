@@ -1,4 +1,4 @@
-package com.example.cryptocurrencycompose.crypto_listing.presentation
+package com.example.cryptocurrencycompose.crypto_listing.presentation.crypto_listing
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,7 +10,6 @@ import com.example.cryptocurrencycompose.crypto_listing.domain.repository.Crypto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

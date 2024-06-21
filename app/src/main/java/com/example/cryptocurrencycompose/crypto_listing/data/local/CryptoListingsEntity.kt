@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class CryptoListingsEntity(
     @PrimaryKey(autoGenerate = true)
     val id : Int? = null,
+    val cryptoId : String,
     val symbol : String,
     val name : String,
     val price : String,
