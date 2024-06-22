@@ -10,6 +10,7 @@ import com.example.cryptocurrencycompose.crypto_listing.data.mapper.toCryptoMode
 import com.example.cryptocurrencycompose.crypto_listing.data.remote.CryptoApi
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoModel
 import com.example.cryptocurrencycompose.crypto_listing.domain.repository.CryptoRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.io.IOException

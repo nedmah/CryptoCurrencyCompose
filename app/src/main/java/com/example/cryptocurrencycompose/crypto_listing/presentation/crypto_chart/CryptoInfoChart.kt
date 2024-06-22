@@ -51,24 +51,24 @@ fun CryptoChart(
                 y = data.price.toFloat()
             )
         }
+        val priceLabels = pointsData.sortedBy { it.y }
 
-        val steps = state.cryptoInfo.size
+        val steps = pointsData.size-1
 
         val xAxisData = AxisData.Builder()
             .axisStepSize(100.dp)
-            .backgroundColor(Color.Blue)
+            .backgroundColor(Color.White)
             .steps(pointsData.size - 1)
-            .labelData { i -> i.toString() }
+            .labelData { i -> i.inc().toString() }
             .labelAndAxisLinePadding(15.dp)
             .build()
 
         val yAxisData = AxisData.Builder()
             .steps(steps)
-            .backgroundColor(Color.Red)
+            .backgroundColor(Color.White)
             .labelAndAxisLinePadding(20.dp)
             .labelData { i ->
-                val yScale = 100 / steps
-                (i * yScale).toString()
+                priceLabels[i].y.toString()
             }.build()
 
 
