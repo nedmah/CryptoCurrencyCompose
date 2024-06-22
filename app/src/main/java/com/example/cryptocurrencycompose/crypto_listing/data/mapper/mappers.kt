@@ -6,6 +6,7 @@ import com.example.cryptocurrencycompose.crypto_listing.data.remote.CryptoListin
 import com.example.cryptocurrencycompose.crypto_listing.data.util.CryptoInfoFormatter
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoInfoModel
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoModel
+import java.util.Calendar
 
 
 fun CryptoListingDataDto.toCryptoEntity() : CryptoListingsEntity{
@@ -50,13 +51,20 @@ fun CryptoModel.toCryptoListingsEntity() : CryptoListingsEntity{
 
 fun CryptoInfoDataDto.toCryptoInfoModel() : CryptoInfoModel{
 
-    val formatter = CryptoInfoFormatter()
-    val formattedTime = formatter.getHourFromTimestamp(time)
-    val formattedPrice = formatter.formatPrice(price)
+    val formattedPrice = CryptoInfoFormatter().formatPrice(price)
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = time
+    val year = calendar.get(Calendar.YEAR)
+    val month = calendar.get(Calendar.MONTH) + 1 // Months are indexed from 0
+    val day = calendar.get(Calendar.DAY_OF_MONTH)
+    val hour = calendar.get(Calendar.HOUR_OF_DAY)
 
     return CryptoInfoModel(
         price = formattedPrice,
-        time = formattedTime,
+        year = year,
+        month = month,
+        day = day,
+        time = hour,
         date = date
     )
 }

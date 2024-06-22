@@ -93,6 +93,9 @@ dependencies {
     //Paging
     implementation ("androidx.paging:paging-compose:3.3.0")
 
+    //Charts
+    implementation ("co.yml:ycharts:2.1.0")
+
     implementation ("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
 
     implementation("androidx.core:core-ktx:1.13.1")

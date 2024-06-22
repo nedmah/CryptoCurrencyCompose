@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.cryptocurrencycompose.crypto_listing.presentation.crypto_chart.CryptoInfoViewModel
+import com.example.cryptocurrencycompose.crypto_listing.presentation.destinations.CryptoChartDestination
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
@@ -52,15 +54,21 @@ fun CryptoListingsScreen(
                 ) {
                 items(state.cryptos.size) { i ->
 
-                    ListingsItem(modifier = modifier.fillMaxWidth(), crypto = state.cryptos[i])
+                    ListingsItem(
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                navigator.navigate(
+                                    CryptoChartDestination(state.cryptos[i].id)
+                                )
+                            },
+                        crypto = state.cryptos[i]
+                    )
 
                     if (i < state.cryptos.size) {
                         HorizontalDivider(
                             modifier = modifier
                                 .padding(horizontal = 16.dp)
-                                .clickable {
-                                    //TODO: доп инфа?
-                                }
                         )
                     }
                 }

@@ -10,10 +10,9 @@ interface CryptoApi {
     suspend fun getCryptoListings() : CryptoListingDto
 
 
-    /**
-     * m1 - price every minute in  day  (should probably take every 60 element in 1440 of all = 24)
-     * m30 - every 30 minutes in 14 days (every 48 in 672 = 14)
+    /** intervals:
      * h1 - every hour in 1 month (every 24 in 720 = 30)
+     * d1 - every day in 1 year
      */
     @GET("assets/{id}/history")
     suspend fun getCryptoInfo(

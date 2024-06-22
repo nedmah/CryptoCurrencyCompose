@@ -1,6 +1,7 @@
 package com.example.cryptocurrencycompose.crypto_listing.data.repository
 
 import com.example.cryptocurrencycompose.commons.util.Resource
+import com.example.cryptocurrencycompose.crypto_listing.data.mapper.toCryptoInfoModel
 import com.example.cryptocurrencycompose.crypto_listing.data.remote.CryptoApi
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoInfoModel
 import com.example.cryptocurrencycompose.crypto_listing.domain.repository.CryptoInfoRepository
@@ -13,8 +14,11 @@ class CryptoInfoRepositoryImpl @Inject constructor(
     override suspend fun getCryptoInfo(id: String, interval: String): Resource<List<CryptoInfoModel>> {
 
         return try {
-            //TODO: группируем листы в зависимости от интервала, мапим
-            Resource.Success()
+
+            val remoteCryptoInfo = api.getCryptoInfo(id, interval)
+            val info = remoteCryptoInfo.data.map { item -> item.toCryptoInfoModel()}
+            Resource.Success(data = info)
+
         }catch (e : Exception){
             Resource.Error(message = e.message ?: "Unknown error has occurred")
         }
