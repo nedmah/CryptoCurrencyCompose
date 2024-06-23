@@ -2,6 +2,7 @@ package com.example.cryptocurrencycompose.crypto_listing.presentation.crypto_cha
 
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +28,8 @@ import co.yml.charts.ui.linechart.model.LineStyle
 import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
+import com.example.cryptocurrencycompose.ui.theme.BlueBackground
+import com.example.cryptocurrencycompose.ui.theme.GreenStroke
 import com.ramcosta.composedestinations.annotation.Destination
 
 
@@ -77,7 +80,7 @@ fun CryptoChart(
                 lines = listOf(
                     Line(
                         dataPoints = pointsData,
-                        LineStyle(),
+                        LineStyle(color = GreenStroke),
                         IntersectionPoint(),
                         SelectionHighlightPoint(),
                         ShadowUnderLine(),
@@ -94,7 +97,7 @@ fun CryptoChart(
 
 
         Column(
-            modifier = modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize().background(BlueBackground)
         ) {
             Text(
                 text = id,
@@ -108,7 +111,7 @@ fun CryptoChart(
             ChartTimeRow(viewModel = viewModel)
 
             LineChart(
-                modifier = modifier,
+                modifier = modifier.padding(10.dp),
                 lineChartData = lineChartData
             )
 

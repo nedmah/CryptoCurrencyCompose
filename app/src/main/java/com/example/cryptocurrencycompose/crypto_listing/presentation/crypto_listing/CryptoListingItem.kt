@@ -2,7 +2,6 @@ package com.example.cryptocurrencycompose.crypto_listing.presentation.crypto_lis
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,9 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,16 +18,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptocurrencycompose.commons.util.shimmerEffect
 import com.example.cryptocurrencycompose.crypto_listing.data.util.CryptoInfoFormatter
 import com.example.cryptocurrencycompose.crypto_listing.domain.model.CryptoModel
+import com.example.cryptocurrencycompose.ui.theme.BlueBackground
 import com.example.cryptocurrencycompose.ui.theme.GreenPercent
+import com.example.cryptocurrencycompose.ui.theme.GreenStroke
 import com.example.cryptocurrencycompose.ui.theme.RedPercent
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+import com.example.cryptocurrencycompose.ui.theme.LightBlue
 
 @Composable
 fun ListingsItem(
@@ -40,11 +37,11 @@ fun ListingsItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .background(Color.White)
+            .background(BlueBackground)
             .padding(16.dp),
         shape = RoundedCornerShape(15.dp),
-        border = BorderStroke(1.dp, Color.Black),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        border = BorderStroke(2.dp, GreenStroke),
+        colors = CardDefaults.cardColors(containerColor = LightBlue)
     ) {
         Row(
             modifier = modifier.padding(10.dp),
@@ -105,11 +102,10 @@ fun ShimmerListItem(
         modifier = modifier
             .fillMaxWidth()
             .height(60.dp)
-            .background(Color.White)
             .padding(12.dp),
         shape = RoundedCornerShape(15.dp),
-        border = BorderStroke(1.dp, Color.Black),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        border = BorderStroke(1.dp, GreenStroke),
+        colors = CardDefaults.cardColors(containerColor = LightBlue)
     ) {
         Row(
             modifier = modifier.fillMaxWidth().padding(5.dp),
