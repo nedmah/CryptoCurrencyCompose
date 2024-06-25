@@ -8,9 +8,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import java.io.File
 import javax.inject.Singleton
 
 
@@ -27,11 +30,23 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCryptoApi() : CryptoApi{
+    fun provideOkHttpClientProvider(app: Application): OkHttpClientProvider {
+        return OkHttpClientProvider(app)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideCryptoApi(okHttpClientProvider: OkHttpClientProvider) : CryptoApi{
+
         return Retrofit.Builder()
             .baseUrl(CryptoApi.BASE_URL)
+            .client(okHttpClientProvider.provideOkHttpClient())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
     }
+
+
+
 }

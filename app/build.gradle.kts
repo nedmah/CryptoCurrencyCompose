@@ -75,7 +75,8 @@ dependencies {
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // Room
     implementation ("androidx.room:room-ktx:$room_version")
@@ -96,6 +97,7 @@ dependencies {
     //Charts
     implementation ("co.yml:ycharts:2.1.0")
 
+    //swipe refresh
     implementation ("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
 
     implementation("androidx.core:core-ktx:1.13.1")
