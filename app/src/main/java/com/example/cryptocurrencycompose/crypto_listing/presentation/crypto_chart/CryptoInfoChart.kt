@@ -31,6 +31,8 @@ import co.yml.charts.ui.linechart.model.ShadowUnderLine
 import com.example.cryptocurrencycompose.ui.theme.BlueBackground
 import com.example.cryptocurrencycompose.ui.theme.GreenStroke
 import com.ramcosta.composedestinations.annotation.Destination
+import java.text.NumberFormat
+import java.util.Locale
 
 
 @Composable
@@ -48,10 +50,11 @@ fun CryptoChart(
     if (state.cryptoInfo.isNotEmpty()) {
 
         Log.d("TESTINGS", state.cryptoInfo.toString())
+        val nf = NumberFormat.getInstance(Locale.getDefault())
         val pointsData: List<Point> = state.cryptoInfo.mapIndexed() { index, data ->
             Point(
                 x = index.toFloat(),
-                y = data.price.toFloat()
+                y = nf.parse(data.price).toFloat()
             )
         }
         val priceLabels = pointsData.sortedBy { it.y }
